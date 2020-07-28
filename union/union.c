@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:52:13 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/23 14:16:13 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/27 17:21:16 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@ int		main(int argc, char **argv)
 
 	if (argc == 3)
 	{
+		i = 0;
+		while (i < 255)
+			used[i++] = 0;
 		i = 1;
 		while (i < argc)
 		{
 			j = 0;
 			while (argv[i][j])
-			{
+			{		
 				if (used[(unsigned char)argv[i][j]] == 0)
 				{
 					used[(unsigned char)argv[i][j]] = 1;
-					write(1, &argv[i][j], 1);
+						write(1, &argv[i][j], 1);
 				}
 				j++;
 			}

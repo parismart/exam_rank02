@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 08:55:23 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/24 17:43:29 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/28 12:15:08 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,45 @@ int main(void)
 	F("--Format---");
 	F("\n");
 	F("%d", 0);
+	F("\n");
 	F("%d", 42);
+	F("\n");
 	F("%d", 1);
+	F("\n");
 	F("%d", 5454);
+	F("\n");
 	F("%d", (int)2147483647);
+	F("\n");
 	F("%d", (int)2147483648);
+	F("\n");
 	F("%d", (int)-2147483648);
+	F("\n");
 	F("%d", (int)-2147483649);
 	F("\n");
 	F("%x", 0);
+	F("\n");
 	F("%x", 42);
+	F("\n");
 	F("%x", 1);
+	F("\n");
 	F("%x", 5454);
+	F("\n");
 	F("%x", (int)2147483647);
+	F("\n");
 	F("%x", (int)2147483648);
+	F("\n");
 	F("%x", (int)-2147483648);
+	F("\n");
 	F("%x", (int)-2147483649);
+	F("\n");
 	F("%s", "");
+	F("\n");
 	F("%s", "toto");
+	F("\n");
 	F("%s", "wiurwuyrhwrywuier");
+	F("\n");
 	F("%s", NULL);
+	F("\n");
 	F("-%s-%s-%s-%s-\n", "", "toto", "wiurwuyrhwrywuier", NULL);
 	F("\n--Mixed---\n");
 	F("%d%x%d%x%d%x%d%x\n", 0, 0, 42, 42, 2147483647, 2147483647, (int)-2147483648, (int)-2147483648);
@@ -105,5 +124,9 @@ int main(void)
 	F("s10w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w4p ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
+	F("%10.2s\n", "toto");
+	F("Magic %s is %5d", "number", 42);
+	F("\n");
+	F("Hexadecimal for %d is %x\n", 42, 42);
 	printf("written: %d\n", r);
 }

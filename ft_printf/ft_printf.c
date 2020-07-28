@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 14:15:07 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/25 20:40:18 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/28 12:36:12 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-static size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static size_t	ft_nbrlen(long long n, int base_len)
+static size_t	ft_nbrlen(long n, int base_len)
 {
 	size_t	i;
 
@@ -38,7 +28,7 @@ static size_t	ft_nbrlen(long long n, int base_len)
 	return (i);
 }
 
-static void		ft_putnbr(long long nbr, int base_len, char *base)
+static void		ft_putnbr(long nbr, int base_len, char *base)
 {
 	if (nbr >= base_len)
 		ft_putnbr(nbr / base_len, base_len, base);
@@ -47,7 +37,7 @@ static void		ft_putnbr(long long nbr, int base_len, char *base)
 
 int		ft_printf(char *format, ...)
 {
-	va_list	valist;
+	va_list	args;
 	char	*str;
 	char	*s;
 	char	*base;
@@ -70,7 +60,10 @@ int		ft_printf(char *format, ...)
 	spaces = 0;
 	zeros = 0;
 	length = 0;
-	va_start(valist, format);
+	s = NULL;
+	base = NULL;
+	nbr = 0;
+	va_start(args, format);
 	str = format;
 	while (*str)
 	{
@@ -101,14 +94,15 @@ int		ft_printf(char *format, ...)
 			}
 			if (*str == 's')
 			{
-				s = va_arg(valist, char *);
+				s = va_arg(args, char *);
 				if (!s)
 					s = "(null)";
-				n = ft_strlen(s);
+				while (s[n])
+					n++;
 			}
 			if (*str == 'd')
 			{
-				nbr = va_arg(valist, long);
+				nbr = va_arg(args, int);
 				base_len = 10;
 				base = "0123456789";
 				if (nbr < 0)
@@ -120,7 +114,7 @@ int		ft_printf(char *format, ...)
 			}
 			if (*str == 'x')
 			{
-				nbr = va_arg(valist, unsigned);
+				nbr = va_arg(args, unsigned);
 				base_len = 16;
 				base = "0123456789abcdef";
 				n = ft_nbrlen(nbr, base_len);
@@ -157,6 +151,6 @@ int		ft_printf(char *format, ...)
 		}
 		str++;
 	}
-	va_end(valist);
+	va_end(args);
 	return (length);
 }

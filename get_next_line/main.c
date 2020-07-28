@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 15:04:40 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/25 14:51:28 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/28 12:23:58 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ int	main()
 	{
 		printf("%d - ", flag);
 		printf("%s\n", line);
-
+		free(line);
+		line = NULL;
 	}
 	printf("%d - ", flag);
 	printf("%s", line);
+	free(line);
+	line = NULL;
 	close(fd);
 	return (0);
 }
