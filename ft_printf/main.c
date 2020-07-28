@@ -6,13 +6,11 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 08:55:23 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 12:15:08 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/28 12:49:00 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
 
 #ifndef REAL
 #define F r += ft_printf

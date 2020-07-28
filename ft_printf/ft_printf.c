@@ -6,18 +6,16 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 14:15:07 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 12:36:12 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/28 12:47:55 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdlib.h>
 
-static size_t	ft_nbrlen(long n, int base_len)
+static int	ft_nbrlen(long n, int base_len)
 {
-	size_t	i;
+	int	i;
 
 	i = 1;
 	while (n >= base_len)
