@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 15:04:40 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/30 14:29:19 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:02:35 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
-int	main()
+int	main(void)
 {
 	int		flag;
 	char	*line;

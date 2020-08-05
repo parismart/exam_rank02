@@ -6,13 +6,13 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:35:40 by parmarti          #+#    #+#             */
-/*   Updated: 2020/08/05 20:48:55 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:03:10 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s, char c)
+static char	*ft_strjoin(char *s, char c)
 {
 	int		i;
 	char	*str;
@@ -34,7 +34,7 @@ char	*ft_strjoin(char *s, char c)
 	return (str);
 }
 
-int		get_next_line(char **line)
+int			get_next_line(char **line)
 {
 	char	*buffer;
 	int		flag;

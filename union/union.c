@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:52:13 by parmarti          #+#    #+#             */
-/*   Updated: 2020/08/05 20:55:56 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 21:04:10 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int		main(int argc, char **argv)
 		{
 			j = 0;
 			while (argv[i][j])
-			{		
+			{
 				if (ascii[(int)argv[i][j]] == 0)
 				{
 					ascii[(int)argv[i][j]] = 1;
-						write(1, &argv[i][j], 1);
+					write(1, &argv[i][j], 1);
 				}
 				j++;
 			}
