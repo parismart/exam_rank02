@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parmarti </var/mail/parmarti>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 08:55:23 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 12:49:00 by parmarti         ###   ########.fr       */
+/*   Created: 2020/07/28 22:55:44 by parmarti          #+#    #+#             */
+/*   Updated: 2020/07/28 22:56:21 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
+int	ft_printf(char const *format, ...);
+
 #ifndef REAL
-#define F r += ft_printf
+# define F	r += ft_printf
 #else
-#define F r += printf
+# define F	r += printf
 #endif
 
-int		ft_printf(char *format, ...);
-
-int main(void)
+int	main(void)
 {
-	int r;
+	int	r;
 
 	r = 0;
 	F("Simple test\n");
@@ -30,45 +30,26 @@ int main(void)
 	F("--Format---");
 	F("\n");
 	F("%d", 0);
-	F("\n");
 	F("%d", 42);
-	F("\n");
 	F("%d", 1);
-	F("\n");
 	F("%d", 5454);
-	F("\n");
 	F("%d", (int)2147483647);
-	F("\n");
 	F("%d", (int)2147483648);
-	F("\n");
 	F("%d", (int)-2147483648);
-	F("\n");
 	F("%d", (int)-2147483649);
 	F("\n");
 	F("%x", 0);
-	F("\n");
 	F("%x", 42);
-	F("\n");
 	F("%x", 1);
-	F("\n");
 	F("%x", 5454);
-	F("\n");
 	F("%x", (int)2147483647);
-	F("\n");
 	F("%x", (int)2147483648);
-	F("\n");
 	F("%x", (int)-2147483648);
-	F("\n");
 	F("%x", (int)-2147483649);
-	F("\n");
 	F("%s", "");
-	F("\n");
 	F("%s", "toto");
-	F("\n");
 	F("%s", "wiurwuyrhwrywuier");
-	F("\n");
 	F("%s", NULL);
-	F("\n");
 	F("-%s-%s-%s-%s-\n", "", "toto", "wiurwuyrhwrywuier", NULL);
 	F("\n--Mixed---\n");
 	F("%d%x%d%x%d%x%d%x\n", 0, 0, 42, 42, 2147483647, 2147483647, (int)-2147483648, (int)-2147483648);
@@ -79,7 +60,7 @@ int main(void)
 	F("--1 Flag--\n");
 	F("d0w %0d %0d %0d %0d %0d %0d %0d %0d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
 	F("d4w %4d %4d %4d %4d %4d %4d %4d %4d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
-	F("d10w %10d %10d %10d %10d %10d %10d %10d %10d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
+	F("d10w %9d %10d %10d %10d %10d %10d %10d %10d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
 	F("d0p %.0d %.0d %.0d %.0d %.0d %.0d %.0d %.0d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
 	F("d4p %.4d %.4d %.4d %.4d %.4d %.4d %.4d %.4d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
 	F("d10p %.10d %.10d %.10d %.10d %.10d %.10d %.10d %.10d\n", 0, 42, 1, 4554, 2147483647, (int)2147483648, (int)-2147483648, (int)-2147483649);
@@ -122,9 +103,5 @@ int main(void)
 	F("s10w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w4p ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
-	F("%10.2s\n", "toto");
-	F("Magic %s is %5d", "number", 42);
-	F("\n");
-	F("Hexadecimal for %d is %x\n", 42, 42);
 	printf("written: %d\n", r);
 }

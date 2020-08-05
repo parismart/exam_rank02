@@ -6,13 +6,13 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:35:40 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 12:25:21 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 20:48:55 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s, char *c)
+char	*ft_strjoin(char *s, char c)
 {
 	int		i;
 	char	*str;
@@ -28,26 +28,27 @@ char	*ft_strjoin(char *s, char *c)
 		str[i] = s[i];
 		i++;
 	}
-	str[i] = c[0];
+	str[i] = c;
 	str[i + 1] = '\0';
 	free(s);
 	return (str);
 }
 
-int		get_next_line(int fd, char **line)
+int		get_next_line(char **line)
 {
-	char	buffer[1];
+	char	*buffer;
 	int		flag;
 
-	if (!line || !(*line = malloc(1)))
+	buffer = (char *)malloc(2);
+	if (!line || !(*line = (char *)malloc(1)) || !buffer)
 		return (-1);
 	*line[0] = '\0';
-	while ((flag = read(fd, buffer, 1)) > 0)
+	while ((flag = read(0, buffer, 1)) > 0)
 	{
-		if (buffer[0] == '\n' || buffer[0] == '\0')
+		if (buffer[0] == '\n')
 			break ;
-		*line = ft_strjoin(*line, buffer);
+		*line = ft_strjoin(*line, buffer[0]);
 	}
-	buffer[0] = '\0';
+	free(buffer);
 	return (flag);
 }

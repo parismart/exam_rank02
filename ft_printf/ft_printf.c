@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 14:15:07 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 12:47:55 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/07/29 11:10:24 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,59 +20,45 @@ static int	ft_nbrlen(long n, int base_len)
 	i = 1;
 	while (n >= base_len)
 	{
-		n = n / base_len;
+		n /= base_len;
 		i++;
 	}
 	return (i);
 }
 
-static void		ft_putnbr(long nbr, int base_len, char *base)
+static void	ft_putnbr(long nbr, int base_len, char *base)
 {
 	if (nbr >= base_len)
 		ft_putnbr(nbr / base_len, base_len, base);
 	write(1, &base[nbr % base_len], 1);
 }
 
-int		ft_printf(char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list	args;
 	char	*str;
 	char	*s;
-	char	*base;
 	long	nbr;
-	int		base_len;
 	int		neg;
-	int		n;
+	int		len;
 	int		width;
-	int		precision;
-	int		flag_prec;
+	int		prec;
 	int		spaces;
 	int		zeros;
 	int		length;
 
-	neg = 0;
-	n = 0;
-	width = 0;
-	precision = 0;
-	flag_prec = 0;
-	spaces = 0;
-	zeros = 0;
-	length = 0;
-	s = NULL;
-	base = NULL;
-	nbr = 0;
 	va_start(args, format);
-	str = format;
+	str = (char *)format;
+	length = 0;
 	while (*str)
 	{
 		if (*str == '%')
 		{
 			str++;
 			neg = 0;
-			n = 0;
+			len = 0;
 			width = 0;
-			precision = 0;
-			flag_prec = 0;
+			prec = -1;
 			spaces = 0;
 			zeros = 0;
 			while (*str >= '0' && *str <= '9')
@@ -82,11 +68,11 @@ int		ft_printf(char *format, ...)
 			}
 			if (*str == '.')
 			{
-				flag_prec = 1;
+				prec = 0;
 				str++;
 				while (*str >= '0' && *str <= '9')
 				{
-					precision = precision * 10 + (*str - 48);
+					prec = prec * 10 + (*str - 48);
 					str++;
 				}
 			}
@@ -95,58 +81,47 @@ int		ft_printf(char *format, ...)
 				s = va_arg(args, char *);
 				if (!s)
 					s = "(null)";
-				while (s[n])
-					n++;
+				while (s[len])
+					len++;
 			}
 			if (*str == 'd')
 			{
 				nbr = va_arg(args, int);
-				base_len = 10;
-				base = "0123456789";
 				if (nbr < 0)
 				{
 					nbr = -nbr;
 					neg = 1;
 				}
-				n = ft_nbrlen(nbr, base_len) + neg;
+				len = ft_nbrlen(nbr, 10) + neg;
 			}
 			if (*str == 'x')
 			{
 				nbr = va_arg(args, unsigned);
-				base_len = 16;
-				base = "0123456789abcdef";
-				n = ft_nbrlen(nbr, base_len);
+				len = ft_nbrlen(nbr, 16);
 			}
-			if (flag_prec == 1 && precision > n && *str != 's')
-				zeros = precision - n + neg;
-			else if (flag_prec == 1 && precision < n && *str == 's')
-				n = precision;
-			else if (flag_prec == 1 && precision == 0 && (*str == 's' || nbr == 0))
-				n = 0;
-			spaces = width - zeros - n;
+			if (prec > len && *str != 's')
+				zeros = prec - len + neg;
+			else if (prec > -1 && prec < len && *str == 's')
+				len = prec;
+			else if (prec == 0 && (*str == 's' || nbr == 0))
+				len = 0;
+			spaces = width - zeros - len;
 			while (spaces-- > 0)
-			{
-				write(1, " ", 1);
-				length++;
-			}
+				length += write(1, " ", 1);
 			if (neg == 1)
 				write(1, "-", 1);
 			while (zeros-- > 0)
-			{
-				write(1, "0", 1);
-				length++;
-			}
+				length += write(1, "0", 1);
 			if (*str == 's')
-				write(1, s, n);
-			else if (n > 0)
-				ft_putnbr(nbr, base_len, base);
-			length = length + n;
+				write(1, s, len);
+			else if (len > 0 && *str == 'd')
+				ft_putnbr(nbr, 10, "0123456789");
+			else if (len > 0 && *str == 'x')
+				ft_putnbr(nbr, 16, "0123456789abcdef");
+			length += len;
 		}
 		else
-		{
-			write(1, str, 1);
-			length++;
-		}
+			length += write(1, str, 1);
 		str++;
 	}
 	va_end(args);

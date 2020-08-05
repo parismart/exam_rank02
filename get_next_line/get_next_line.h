@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 14:59:42 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/24 10:50:36 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 20:48:25 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int	get_next_line(int fd, char **line);
+int	get_next_line(char **line);
 
 #endif

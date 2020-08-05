@@ -1,4 +1,4 @@
-gcc -Wall -Werror -Wextra union.c -o union
+clang -Wall -Werror -Wextra union.c -o union
 echo "# Expected result (next line) Your result #"
 echo "---"
 echo "zpadintoqefwjy$"

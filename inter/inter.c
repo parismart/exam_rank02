@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:37:04 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/27 17:18:48 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/05 20:54:07 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	inter(const char *s1, const char *s2)
 {
-	unsigned int	used[255];
+	unsigned int	ascii[255];
 	unsigned int	i;
 
 	i = 0;
 	while (i < 255)
-		used[i++] = 0;
+		ascii[i++] = 0;
 	i = 0;
 	while (s2[i])
 	{
-		if (used[(unsigned char)s2[i]] == 0)
-			used[(unsigned char)s2[i]] = 1;
+		if (ascii[(int)s2[i]] == 0)
+			ascii[(int)s2[i]] = 1;
 		i++;
 	}
 	i = 0;
 	while (s1[i])
 	{
-		if (used[(unsigned char)s1[i]] == 1)
+		if (ascii[(int)s1[i]] == 1)
 		{
-			used[(unsigned char)s1[i]] = 2;
+			ascii[(int)s1[i]] = 2;
 			write(1, &s1[i], 1);
 		}
 		i++;
