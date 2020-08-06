@@ -6,11 +6,12 @@
 /*   By: parmarti </var/mail/parmarti>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 22:55:44 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/28 22:56:21 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/06 19:15:26 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <limits.h>
 
 int	ft_printf(char const *format, ...);
 
@@ -103,5 +104,6 @@ int	main(void)
 	F("s10w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w4p ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s` ~%4.4s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
 	F("s4w10p ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s` ~%10.10s`\n", "", "toto", "0123456789", "tjehurthteutuiehteute", NULL);
+	F("<%15.11d>\n", INT_MIN);
 	printf("written: %d\n", r);
 }

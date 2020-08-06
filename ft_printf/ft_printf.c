@@ -6,7 +6,7 @@
 /*   By: parmarti <parmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 14:15:07 by parmarti          #+#    #+#             */
-/*   Updated: 2020/07/29 11:10:24 by parmarti         ###   ########.fr       */
+/*   Updated: 2020/08/06 19:17:10 by parmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		ft_printf(const char *format, ...)
 				nbr = va_arg(args, unsigned);
 				len = ft_nbrlen(nbr, 16);
 			}
-			if (prec > len && *str != 's')
+			if (prec >= len && *str != 's')
 				zeros = prec - len + neg;
 			else if (prec > -1 && prec < len && *str == 's')
 				len = prec;
